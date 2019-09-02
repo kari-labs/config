@@ -5,6 +5,7 @@ import (
 	"strconv"
 )
 
+// DBConfig contains all relevant information to connect to the database
 type DBConfig struct {
 	Host     string
 	Port     uint16
@@ -13,11 +14,12 @@ type DBConfig struct {
 	Database string
 }
 
+// Config contains a DBConfig for database access
 type Config struct {
 	DB DBConfig
 }
 
-// New() creates a new instance of a configuration
+// New creates a new instance of a configuration
 func New() *Config {
 	return &Config{
 		DB: DBConfig{

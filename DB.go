@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"os"
 	"strconv"
 )
@@ -17,6 +18,11 @@ type DBConfig struct {
 // Config contains a DBConfig for database access
 type Config struct {
 	DB DBConfig
+}
+
+// CreateConnectionString returns a connection string created using data from the config.DB variable
+func (db *Config) CreateConnectionString() string {
+	return fmt.Sprintf("%s:%s@tcp(%s:%v)/%s", db.DB.User, db.DB.Password, db.DB.Host, db.DB.Port, db.DB.Database)
 }
 
 // New creates a new instance of a configuration
